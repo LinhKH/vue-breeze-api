@@ -1,12 +1,17 @@
+<script setup>
+import { useAuthStore } from "../stores/auth";
+
+const authStore = useAuthStore();
+</script>
 <template>
   <nav class="rounded bg-indigo-900 text-white px-2 py-2.5 sm:px-4">
     <div
       class="container mx-auto flex flex-wrap items-center justify-between"
       bis_skin_checked="1"
     >
-      <a href="https://laraveller.com/" class="flex items-center">
+      <router-link to="/" class="flex items-center">
         Laraveller
-      </a>
+      </router-link>
       <button
         data-collapse-toggle="navbar-default"
         type="button"
@@ -45,7 +50,7 @@
               >Home</router-link
             >
           </li>
-
+          <template v-if="!authStore.user">
             <li>
               <router-link
                 :to="{ name: 'Login' }"
@@ -60,20 +65,17 @@
                 >Register</router-link
               >
             </li>
+          </template>
+          <template v-else>
             <button
               @click="authStore.handleLogout"
               class="block rounded py-2 pr-4 pl-3 text-gray-50 hover:bg-gray-700 md:border-0"
             >
               Logout
             </button>
+          </template>
         </ul>
       </div>
     </div>
   </nav>
 </template>
-
-<script setup>
-</script>
-
-<style>
-</style>

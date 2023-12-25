@@ -1,10 +1,10 @@
 <script setup>
-import Nav from './components/Nav.vue';
+import Nav from "./components/Nav.vue";
 </script>
 
 <template>
-  <main>
-    <Nav />
-    <RouterView />
-  </main>
+	<main>
+		<Nav />
+		<RouterView />
+	</main>
 </template>
